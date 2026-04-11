@@ -1,0 +1,339 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #0e0f11;
+  --bg2:      #141519;
+  --bg3:      #1c1d22;
+  --border:   #2a2b31;
+  --border2:  #363740;
+  --ink:      #f0f0ee;
+  --ink2:     #9a9ba6;
+  --ink3:     #565760;
+  --accent:   #4f7fff;
+  --accent2:  #7fa3ff;
+  --tag-bg:   #171c2e;
+  --tag-txt:  #7fa3ff;
+  --tag-bdr:  #2a3454;
+  --cf-bg:    #1e1508;
+  --cf-txt:   #e8a84a;
+  --cf-bdr:   #3d2e10;
+  --live-bg:  #0d1f12;
+  --live-txt: #4ade80;
+  --live-bdr: #1a3d22;
+  --dev-bg:   #1f1608;
+  --dev-txt:  #fbbf24;
+  --dev-bdr:  #3d2e10;
+  --plan-bg:  #18191e;
+  --plan-txt: #565760;
+  --plan-bdr: #2a2b31;
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 15px;
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo {
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink3);
+  letter-spacing: 0.04em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 13px;
+  color: var(--ink2);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--accent2); }
+
+/* ── HERO ── */
+.hero {
+  padding: 5rem 2.5rem 4rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 1.2rem;
+}
+.hero h1 em { font-style: normal; color: var(--accent2); }
+.hero-sub {
+  font-size: 1rem;
+  color: var(--ink2);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ── BOTÕES ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.7rem 1.4rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity .2s, transform .1s;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.7rem 1.4rem;
+  background: transparent;
+  color: var(--ink2);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--border2);
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent2); }
+
+/* ── STACK BADGES ── */
+.stack-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  align-items: center;
+}
+.stack-label {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  color: var(--ink3);
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+.badge {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--tag-bg);
+  color: var(--tag-txt);
+  border: 1px solid var(--tag-bdr);
+  letter-spacing: 0.05em;
+}
+
+/* ── SECÇÕES ── */
+section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3.5rem 2.5rem;
+  border-top: 1px solid var(--border);
+}
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.section-num {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink3);
+  letter-spacing: 0.1em;
+}
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ── PROJECTOS ── */
+.projects-grid { display: grid; gap: 1.2rem; }
+.project-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.6rem 1.8rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  transition: border-color .2s;
+}
+.project-card:hover { border-color: var(--border2); }
+.project-status {
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.status-live { background: var(--live-bg); color: var(--live-txt); border: 1px solid var(--live-bdr); }
+.status-dev  { background: var(--dev-bg);  color: var(--dev-txt);  border: 1px solid var(--dev-bdr); }
+.status-plan { background: var(--plan-bg); color: var(--plan-txt); border: 1px solid var(--plan-bdr); }
+.project-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  letter-spacing: -0.01em;
+}
+.project-desc {
+  font-size: 0.875rem;
+  color: var(--ink2);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: var(--bg3);
+  color: var(--ink3);
+  border: 1px solid var(--border);
+  letter-spacing: 0.05em;
+}
+.tag.cf { background: var(--cf-bg); color: var(--cf-txt); border-color: var(--cf-bdr); }
+.project-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  min-width: 80px;
+}
+.link-btn {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--accent2);
+  border: 1px solid var(--tag-bdr);
+  background: var(--tag-bg);
+  white-space: nowrap;
+  transition: border-color .2s;
+}
+.link-btn:hover { border-color: var(--accent); }
+
+/* ── SOBRE ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+.about-text {
+  font-size: 0.9rem;
+  color: var(--ink2);
+  line-height: 1.85;
+}
+.about-text p + p { margin-top: 1rem; }
+.about-text strong { color: var(--ink); font-weight: 600; }
+.skills-block { display: flex; flex-direction: column; gap: 1.2rem; }
+.skill-row { display: flex; flex-direction: column; gap: 7px; }
+.skill-label {
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  color: var(--ink3);
+  text-transform: uppercase;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+/* ── CONTACTO ── */
+.contact-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.contact-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.1rem 1.4rem;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: border-color .2s;
+}
+.contact-card:hover { border-color: var(--border2); }
+.contact-card .label {
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  color: var(--ink3);
+  text-transform: uppercase;
+}
+.contact-card a { color: var(--accent2); text-decoration: none; font-weight: 600; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink3);
+  border-top: 1px solid var(--border);
+  letter-spacing: 0.05em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  nav { padding: 1rem 1.2rem; }
+  .nav-links { display: none; }
+  .hero, section { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .project-card { grid-template-columns: 1fr; }
+  .project-links { flex-direction: row; align-items: flex-start; }
+}
